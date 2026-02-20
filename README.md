@@ -1,67 +1,66 @@
-# Google-Home-Script-Editor
+# Google Home YAML Automation Collection
 
-Automation Examples Library
+A collection of 22 original, ready-to-use YAML automation scripts for the
+Google Home Script Editor. Covers everyday smart home scenarios including
+lighting, climate control, security, presence detection, and more.
 
-A curated collection of 22 ready-to-use YAML automation scripts for the 
-Google Home Script Editor. This library covers a wide range of common 
-smart home scenarios, from basic switch control to safety alerts and 
-presence-based routines.
+> **Note:** All device and room names are illustrative placeholders.
+> Replace them with your own before deploying (`Device Name - Room Name`).
 
-## Contents
+## Scripts Included
 
-| # | Automation | Description |
-|---|-----------|-------------|
-| 1 | Switch-Controlled Light | Turn on a light via a switch |
-| 2 | Nighttime Dim Lights and Close Blinds | Schedule lights and blinds at 10pm |
-| 3 | Person Detection Cameras | Disable cameras when someone arrives home |
-| 4 | Empty Home Vacuum | Run vacuum when home is unoccupied |
-| 5 | Nighttime Lights and Blinds | Dim lights and close blinds when TV turns on after dark |
-| 6 | Cool Weather Heating | Adjust heating when temperature drops below 18°C |
-| 7 | Warm Weather Ventilation | Adjust cooling when temperature exceeds 25°C |
-| 8 | Scheduled Lighting | Multi-time lighting schedule tied to sunset |
-| 9 | Synchronize Two Lights | Mirror the on/off state of two lights |
-| 10 | Smoke Detector Lights | Flash lights red and blue when smoke is detected |
-| 11 | Low Air Quality Air Purifier | Run purifier at high speed when air quality is poor |
-| 12 | Nighttime Unlocking Lights | Turn on lights at full brightness when door unlocks at night |
-| 13 | Carbon Monoxide Detection Lights | Pulse lights when CO is detected |
-| 14 | Motion Detection Lights | Lights on with motion, off after 5 minutes of stillness |
-| 15 | Occupancy Sensor Lights | Lights controlled by occupancy sensor |
-| 16 | Occupancy Sensor Cameras | Enable cameras when home is empty |
-| 17 | Doorbell Light Alert | Pulse lights when doorbell rings and room is occupied |
-| 18 | Movie Night Scene | Voice-triggered blinds, lights, and appliance control |
-| 19 | Home and Away Lighting | Presence-based lighting for arrival and departure |
-| 20 | Package Delivered | Notification alert when a package is detected |
-| 21 | Open Blinds | Open blinds on first morning motion, suppressed for 20 hours |
-| 22 | Motion at Home | Weekday motion notification from multiple sensors |
+| # | File | Automation |
+|---|------|-----------|
+| 1 | `01-switch-controlled-light.yaml` | Bedside switch controls lamp |
+| 2 | `02-nighttime-dim-lights-close-blinds.yaml` | Wind-down routine at 9pm |
+| 3 | `03-person-detection-cameras.yaml` | Disable cameras on arrival |
+| 4 | `04-empty-home-vacuum.yaml` | Auto-vacuum when nobody is home |
+| 5 | `05-nighttime-lights-and-blinds.yaml` | Cinema mode when TV turns on at night |
+| 6 | `06-cool-weather-heating.yaml` | Cold morning comfort routine |
+| 7 | `07-warm-weather-ventilation.yaml` | Hot day cooling routine |
+| 8 | `08-scheduled-lighting.yaml` | Evening porch light schedule |
+| 9 | `09-synchronize-two-lights.yaml` | Mirror hallway and staircase lights |
+| 10 | `10-smoke-detector-lights.yaml` | Strobe alert on smoke detection |
+| 11 | `11-low-air-quality-purifier.yaml` | Boost air purifier on poor air quality |
+| 12 | `12-nighttime-unlocking-lights.yaml` | Entry light on nighttime unlock |
+| 13 | `13-carbon-monoxide-detection-lights.yaml` | Pulse lights on CO alert |
+| 14 | `14-motion-detection-lights.yaml` | Garage motion-activated light |
+| 15 | `15-occupancy-sensor-lights.yaml` | Bathroom occupancy light |
+| 16 | `16-occupancy-sensor-cameras.yaml` | Activate cameras when home is empty |
+| 17 | `17-doorbell-light-alert.yaml` | Doorbell flash alert for home office |
+| 18 | `18-movie-night-scene.yaml` | Game night voice scene |
+| 19 | `19-home-and-away-lighting.yaml` | Arrival and departure lighting |
+| 20 | `20-package-delivered.yaml` | Parcel delivery alert |
+| 21 | `21-open-blinds-morning-motion.yaml` | Open blinds on first morning movement |
+| 22 | `22-motion-at-home-weekday.yaml` | Unexpected weekday motion alert |
 
 ## Usage
 
 1. Open the [Google Home app](https://home.google.com)
-2. Navigate to **Automations → Script Editor**
-3. Copy and paste any script from this library
-4. Replace device names and room names to match your own setup
-   - Format: `Device Name - Room Name`
-5. Save and activate the automation
+2. Go to **Automations → Script Editor**
+3. Copy and paste any script from the `automations/` folder
+4. Replace all placeholder device and room names with your own
+5. Save and activate
 
 ## Customization
 
-Each script uses placeholder device names. Before deploying, update:
-- Device names to match your Google Home device list
-- Room names to match your home structure
-- Thresholds (temperature, brightness, time) to your preferences
+Before deploying, update:
+- Device and room names to match your Google Home setup
+- Temperature thresholds, brightness levels, and time schedules
 - Email addresses in notification actions
+- `suppressFor` durations to suit your routine
 
 ## Requirements
 
-- A Google account with Google Home set up
+- A Google account with Google Home configured
 - Compatible smart home devices linked to Google Home
-- Access to the Script Editor (available in the Google Home app)
+- Access to the Google Home Script Editor
 
 ## Contributing
 
-Contributions are welcome! If you have a useful automation to add, please 
-open a pull request with your YAML script and a short description.
+Pull requests are welcome. Add new `.yaml` files to the `automations/`
+folder using the `##-short-description.yaml` naming convention.
 
 ## License
 
-This project is licensed under the MIT License. See `LICENSE` for details.
+Licensed under the MIT License. See `LICENSE` for details.
