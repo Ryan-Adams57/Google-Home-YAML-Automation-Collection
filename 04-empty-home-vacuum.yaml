@@ -1,0 +1,25 @@
+metadata:
+  name: Auto-vacuum when nobody is home
+  description: Start the robot vacuum when everyone has left, and send it to dock when someone returns.
+automations:
+# Start vacuuming when home becomes empty
+- starters:
+  - type: home.state.HomePresence
+    state: homePresenceMode
+    is: AWAY
+  actions:
+  - type: device.command.StartStop
+    devices:
+    - Robot Vacuum - Kitchen
+    start: true
+
+# Return to dock when someone comes home
+- starters:
+  - type: home.state.HomePresence
+    state: homePresenceMode
+    is: HOME
+  actions:
+  - type: device.command.StartStop
+    devices:
+    - Robot Vacuum - Kitchen
+    start: false

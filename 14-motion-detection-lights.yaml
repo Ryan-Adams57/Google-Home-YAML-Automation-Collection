@@ -1,0 +1,26 @@
+metadata:
+  name: Garage motion-activated light
+  description: Turn on the garage light when motion is detected, and switch it off after 10 minutes of no movement.
+automations:
+- starters:
+  - type: device.state.MotionDetection
+    device: Motion Sensor - Garage
+    state: motionDetectionEventInProgress
+    is: true
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Garage Light - Garage
+    on: true
+
+- starters:
+  - type: device.state.MotionDetection
+    device: Motion Sensor - Garage
+    state: motionDetectionEventInProgress
+    is: false
+    for: 10min
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Garage Light - Garage
+    on: false

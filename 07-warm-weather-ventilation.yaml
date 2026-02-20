@@ -1,0 +1,23 @@
+metadata:
+  name: Hot day cooling routine
+  description: When the temperature rises above 27°C, close the blinds to block heat, start the fan, and lower the thermostat target.
+automations:
+- starters:
+  - type: device.state.TemperatureSetting
+    device: Thermostat - Living Room
+    state: thermostatTemperatureAmbient
+    greaterThan: 27C
+  actions:
+  - type: device.command.OpenClose
+    devices:
+    - Blinds - Living Room
+    - Blinds - Home Office
+    openPercent: 0
+  - type: device.command.OnOff
+    devices:
+    - Tower Fan - Living Room
+    on: true
+  - type: device.command.ThermostatTemperatureSetpoint
+    devices:
+    - Thermostat - Living Room
+    thermostatTemperatureSetpoint: 23C

@@ -1,0 +1,19 @@
+metadata:
+  name: Entry light on nighttime unlock
+  description: Between sunset and sunrise, when the front door is unlocked, turn on the entryway light at full brightness.
+automations:
+- starters:
+  - type: device.state.LockUnlock
+    device: Front Door Lock - Entryway
+    state: isLocked
+    is: false
+  condition:
+    type: time.between
+    after: SUNSET
+    before: SUNRISE
+  actions:
+  # Adjusting brightness automatically turns on the light.
+  - type: device.command.BrightnessAbsolute
+    devices:
+    - Entryway Light - Entryway
+    brightness: 100

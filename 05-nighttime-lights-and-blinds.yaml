@@ -1,0 +1,23 @@
+metadata:
+  name: Cinema mode when TV turns on at night
+  description: After sunset, when the TV turns on, lower brightness and close the blinds for a better viewing experience.
+automations:
+- starters:
+  - type: device.state.OnOff
+    device: Smart TV - Living Room
+    state: on
+    is: true
+  condition:
+    type: time.between
+    after: SUNSET
+    before: SUNRISE
+  actions:
+  # Dimming brightness automatically turns on the light if it is off.
+  - type: device.command.BrightnessAbsolute
+    devices:
+    - Floor Lamp - Living Room
+    brightness: 10
+  - type: device.command.OpenClose
+    devices:
+    - Roller Blind - Living Room
+    openPercent: 0

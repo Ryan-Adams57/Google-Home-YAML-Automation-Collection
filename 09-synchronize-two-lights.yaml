@@ -1,0 +1,67 @@
+metadata:
+  name: Mirror hallway and staircase lights
+  description: Keep the hallway light and staircase light in sync — when one turns on or off, the other follows.
+automations:
+- starters:
+  - type: device.state.OnOff
+    device: Hallway Light - Hallway
+    state: on
+    is: true
+  condition:
+    type: device.state.OnOff
+    device: Staircase Light - Staircase
+    state: on
+    is: false
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Staircase Light - Staircase
+    on: true
+
+- starters:
+  - type: device.state.OnOff
+    device: Hallway Light - Hallway
+    state: on
+    is: false
+  condition:
+    type: device.state.OnOff
+    device: Staircase Light - Staircase
+    state: on
+    is: true
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Staircase Light - Staircase
+    on: false
+
+- starters:
+  - type: device.state.OnOff
+    device: Staircase Light - Staircase
+    state: on
+    is: true
+  condition:
+    type: device.state.OnOff
+    device: Hallway Light - Hallway
+    state: on
+    is: false
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Hallway Light - Hallway
+    on: true
+
+- starters:
+  - type: device.state.OnOff
+    device: Staircase Light - Staircase
+    state: on
+    is: false
+  condition:
+    type: device.state.OnOff
+    device: Hallway Light - Hallway
+    state: on
+    is: true
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Hallway Light - Hallway
+    on: false

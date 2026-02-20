@@ -1,0 +1,37 @@
+metadata:
+  name: Arrival and departure lighting
+  description: Turn on key lights when someone arrives home after dark. Turn off all lights when the home is vacated during the day.
+automations:
+# Welcome home lights after dark
+- starters:
+  - type: home.state.HomePresence
+    state: homePresenceMode
+    is: HOME
+  condition:
+    type: time.between
+    after: SUNSET
+    before: SUNRISE
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Entryway Light - Entryway
+    - Kitchen Light - Kitchen
+    on: true
+
+# Save energy: lights off when everyone leaves during the day
+- starters:
+  - type: home.state.HomePresence
+    state: homePresenceMode
+    is: AWAY
+  condition:
+    type: time.between
+    after: SUNRISE
+    before: SUNSET
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Entryway Light - Entryway
+    - Kitchen Light - Kitchen
+    - Desk Lamp - Home Office
+    - Ceiling Light - Living Room
+    on: false

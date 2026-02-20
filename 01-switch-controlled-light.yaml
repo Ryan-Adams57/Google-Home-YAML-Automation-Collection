@@ -1,0 +1,25 @@
+metadata:
+  name: Bedside switch controls lamp
+  description: When the bedside switch is toggled on, turn on the bedroom reading lamp.
+automations:
+- starters:
+  - type: device.state.OnOff
+    device: Bedside Switch - Bedroom
+    state: on
+    is: true
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Reading Lamp - Bedroom
+    on: true
+
+- starters:
+  - type: device.state.OnOff
+    device: Bedside Switch - Bedroom
+    state: on
+    is: false
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Reading Lamp - Bedroom
+    on: false

@@ -1,0 +1,18 @@
+metadata:
+  name: Open bedroom blinds on first morning movement
+  description: The first time motion is detected in the bedroom between 6am and 10am, open all blinds. Suppress for 22 hours to avoid retriggering.
+automations:
+- starters:
+  - type: device.event.MotionDetection
+    device: Motion Sensor - Bedroom
+    suppressFor: 22 hours
+  condition:
+    type: time.between
+    after: 06:00
+    before: 10:00
+  actions:
+  - type: device.command.OpenClose
+    openPercent: 100
+    devices:
+    - Blinds - Bedroom
+    - Blinds - Living Room

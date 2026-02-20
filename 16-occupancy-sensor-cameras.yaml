@@ -1,0 +1,14 @@
+metadata:
+  name: Activate cameras when home is empty
+  description: When the last person leaves, turn on all outdoor security cameras.
+automations:
+- starters:
+  - type: home.state.HomePresence
+    state: homePresenceMode
+    is: AWAY
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Outdoor Camera - Front Yard
+    - Outdoor Camera - Backyard
+    on: true

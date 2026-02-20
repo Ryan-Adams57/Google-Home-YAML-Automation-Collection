@@ -1,0 +1,14 @@
+metadata:
+  name: Parcel delivery alert
+  description: Send a notification to household members when a package is detected at the front door.
+automations:
+- starters:
+  - type: device.event.PackageDelivered
+    device: Video Doorbell - Front Door
+  actions:
+  - type: home.command.Notification
+    title: Parcel Delivered!
+    body: A package has been left at your front door.
+    members:
+    - householdmember1@gmail.com
+    - householdmember2@gmail.com

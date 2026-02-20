@@ -1,0 +1,17 @@
+metadata:
+  name: Doorbell flash alert for home office
+  description: When the doorbell rings and someone is in the home office, pulse the office light as a visual alert.
+automations:
+- starters:
+  - type: device.event.DoorbellPress
+    device: Video Doorbell - Front Door
+  condition:
+    type: device.state.OccupancySensing
+    device: Occupancy Sensor - Home Office
+    state: occupancy
+    is: OCCUPIED
+  actions:
+  - type: device.command.LightEffectPulse
+    devices:
+    - Desk Lamp - Home Office
+    duration: 2min

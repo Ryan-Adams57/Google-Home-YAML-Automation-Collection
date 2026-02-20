@@ -1,0 +1,18 @@
+metadata:
+  name: Boost air purifier on poor air quality
+  description: When the air quality sensor detects poor air, switch on the purifier and set it to maximum fan speed.
+automations:
+- starters:
+  - type: device.state.SensorState
+    device: Air Quality Monitor - Bedroom
+    state: currentSensorStateData.AirQuality.currentSensorState
+    is: poor
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Air Purifier - Bedroom
+    on: true
+  - type: device.command.SetFanSpeed
+    devices:
+    - Air Purifier - Bedroom
+    fanSpeed: "speed_high"

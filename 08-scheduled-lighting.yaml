@@ -1,0 +1,33 @@
+metadata:
+  name: Evening porch light schedule
+  description: Turn on porch lights at sunset at full brightness, dim them at 11pm, and switch them off at 1am.
+automations:
+# Full brightness at sunset
+- starters:
+  - type: time.schedule
+    at: SUNSET
+  actions:
+  - type: device.command.BrightnessAbsolute
+    devices:
+    - Porch Light - Front Door
+    brightness: 100
+
+# Dim at 11 PM
+- starters:
+  - type: time.schedule
+    at: 23:00
+  actions:
+  - type: device.command.BrightnessAbsolute
+    devices:
+    - Porch Light - Front Door
+    brightness: 20
+
+# Off at 1 AM
+- starters:
+  - type: time.schedule
+    at: 01:00
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Porch Light - Front Door
+    on: false

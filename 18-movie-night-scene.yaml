@@ -1,0 +1,21 @@
+metadata:
+  name: Game night voice scene
+  description: Say "game night" to dim the lights, close the blinds, and pause the dishwasher.
+automations:
+- starters:
+  - type: assistant.event.OkGoogle
+    eventData: query
+    is: "Game Night"
+  actions:
+  - type: device.command.BrightnessAbsolute
+    devices:
+    - Ceiling Light - Living Room
+    brightness: 20
+  - type: device.command.OpenClose
+    devices:
+    - Blinds - Living Room
+    openPercent: 0
+  - type: device.command.PauseUnpause
+    devices:
+    - Dishwasher - Kitchen
+    pause: true

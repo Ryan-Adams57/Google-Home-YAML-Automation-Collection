@@ -1,0 +1,17 @@
+metadata:
+  name: Pulse lights on carbon monoxide alert
+  description: If carbon monoxide is detected, trigger a pulsing light effect throughout the home to alert occupants.
+automations:
+- starters:
+  - type: device.state.SensorState
+    device: CO Detector - Garage
+    state: currentSensorStateData.CarbonMonoxideLevel.currentSensorState
+    is: carbon monoxide detected
+  actions:
+  # Requires lights that support the Pulse effect.
+  - type: device.command.LightEffectPulse
+    devices:
+    - Smart Bulb - Bedroom
+    - Smart Bulb - Living Room
+    - Smart Bulb - Hallway
+    duration: 10min

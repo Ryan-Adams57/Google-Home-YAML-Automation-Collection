@@ -1,0 +1,22 @@
+metadata:
+  name: Cold morning comfort routine
+  description: When the bedroom temperature drops below 17°C, open the blinds for sunlight, turn on the fan, and raise the thermostat.
+automations:
+- starters:
+  - type: device.state.TemperatureSetting
+    state: thermostatTemperatureAmbient
+    device: Thermostat - Bedroom
+    lessThan: 17C
+  actions:
+  - type: device.command.OpenClose
+    devices:
+    - Blinds - Bedroom
+    openPercent: 100
+  - type: device.command.OnOff
+    devices:
+    - Ceiling Fan - Bedroom
+    on: true
+  - type: device.command.ThermostatTemperatureSetpoint
+    devices:
+    - Thermostat - Bedroom
+    thermostatTemperatureSetpoint: 20C

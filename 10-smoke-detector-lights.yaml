@@ -1,0 +1,41 @@
+metadata:
+  name: Strobe alert on smoke detection
+  description: When the smoke alarm triggers, flash the lights alternating red and white to draw attention.
+automations:
+- starters:
+  - type: device.state.SensorState
+    device: Smoke Alarm - Hallway
+    state: currentSensorStateData.SmokeLevel.currentSensorState
+    is: high
+  actions:
+  # Setting a color automatically turns on the light.
+  - type: device.command.ColorAbsolute
+    devices:
+    - Smart Bulb - Bedroom
+    - Smart Bulb - Living Room
+    color:
+      name: "red"
+  - type: time.delay
+    for: 3sec
+  - type: device.command.ColorAbsolute
+    devices:
+    - Smart Bulb - Bedroom
+    - Smart Bulb - Living Room
+    color:
+      name: "white"
+  - type: time.delay
+    for: 3sec
+  - type: device.command.ColorAbsolute
+    devices:
+    - Smart Bulb - Bedroom
+    - Smart Bulb - Living Room
+    color:
+      name: "red"
+  - type: time.delay
+    for: 3sec
+  - type: device.command.ColorAbsolute
+    devices:
+    - Smart Bulb - Bedroom
+    - Smart Bulb - Living Room
+    color:
+      name: "white"

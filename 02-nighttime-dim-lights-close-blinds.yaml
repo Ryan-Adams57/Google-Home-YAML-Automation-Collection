@@ -1,0 +1,17 @@
+metadata:
+  name: Wind-down routine at 9pm
+  description: At 9pm, dim the living room lights to a relaxing level and close the blinds for privacy.
+automations:
+- starters:
+  - type: time.schedule
+    at: 21:00
+  actions:
+  # Dimming brightness automatically turns on the light if it is off.
+  - type: device.command.BrightnessAbsolute
+    devices:
+    - Ceiling Light - Living Room
+    brightness: 30
+  - type: device.command.OpenClose
+    devices:
+    - Window Blinds - Living Room
+    openPercent: 0

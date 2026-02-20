@@ -1,0 +1,28 @@
+metadata:
+  name: Unexpected weekday motion alert
+  description: If motion is detected inside the home on a weekday during work hours, send a notification to all members.
+automations:
+- starters:
+  - type: device.event.MotionDetection
+    device: Indoor Camera - Living Room
+  - type: device.event.MotionDetection
+    device: Motion Sensor - Hallway
+  - type: device.event.MotionDetection
+    device: Motion Sensor - Kitchen
+  condition:
+    type: time.between
+    after: 08:00
+    before: 17:00
+    weekdays:
+      - MON
+      - TUE
+      - WED
+      - THU
+      - FRI
+  actions:
+  - type: home.command.Notification
+    title: Motion detected at home
+    body: Movement was detected inside your home during work hours.
+    members:
+    - householdmember1@gmail.com
+    - householdmember2@gmail.com
