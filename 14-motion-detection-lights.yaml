@@ -1,0 +1,26 @@
+metadata:
+  name: Motion detection lights
+  description: When motion is detected, turn on the lights, then turn them off after five minutes of stillness.
+automations:
+- starters:
+  - type: device.state.MotionDetection
+    device: sensor - Living Room
+    state: motionDetectionEventInProgress
+    is: true
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - light - Living Room
+    on: true
+
+- starters:
+  - type: device.state.MotionDetection
+    device: sensor - Living Room
+    state: motionDetectionEventInProgress
+    is: false
+    for: 5min
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - light - Living Room
+    on: false

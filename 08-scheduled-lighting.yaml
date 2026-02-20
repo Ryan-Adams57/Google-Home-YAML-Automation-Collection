@@ -1,0 +1,32 @@
+metadata:
+  name: Scheduled lighting
+  description: Turn on the lights at sunset, dim them at 10pm and turn them off at midnight.
+automations:
+# At sunset
+- starters:
+  - type: time.schedule
+    at: SUNSET
+  actions:
+  # Adjusting brightness will automatically turn on the lights.
+  # No need to add a separate OnOff command.
+  - type: device.command.BrightnessAbsolute
+    devices:
+    - Christmas lights - Living Room
+    brightness: 100
+# At 10 PM
+- starters:
+  - type: time.schedule
+    at: 22:00
+  actions:
+  - type: device.command.BrightnessAbsolute
+    devices:
+    - Christmas lights - Living Room
+    brightness: 50
+# At midnight
+- starters:
+  - type: time.schedule
+    at: 00:00
+  actions:
+  - type: device.command.OnOff
+    devices: Christmas lights - Living Room
+    on: false

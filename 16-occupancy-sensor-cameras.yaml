@@ -1,0 +1,13 @@
+metadata:
+  name: Occupancy sensor cameras
+  description: Once the home is unoccupied, turn on cameras.
+automations:
+- starters:
+  - type: home.state.HomePresence
+    state: homePresenceMode
+    is: AWAY
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Camera - Living Room
+    on: true

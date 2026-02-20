@@ -1,0 +1,26 @@
+metadata:
+  name: Occupancy sensor lights
+  description: When an occupant is detected, turn on the lights, then turn them off after five minutes.
+automations:
+- starters:
+  - type: device.state.OccupancySensing
+    device: sensor - Living Room
+    state: occupancy
+    is: OCCUPIED
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - light - Living Room
+    on: true
+
+- starters:
+  - type: device.state.OccupancySensing
+    device: sensor - Living Room
+    state: occupancy
+    is: UNOCCUPIED
+    for: 5min
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - light - Living Room
+    on: false

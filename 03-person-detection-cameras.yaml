@@ -1,0 +1,13 @@
+metadata:
+  name: Person detection cameras
+  description: When the first person comes home, turn off cameras.
+automations:
+- starters:
+  - type: home.state.HomePresence
+    state: homePresenceMode
+    is: HOME
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - Camera - Living room
+    on: false

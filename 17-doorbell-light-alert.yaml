@@ -1,0 +1,17 @@
+metadata:
+  name: Doorbell light alert
+  description: When someone rings the doorbell, blink the lights in occupied room.
+automations:
+- starters:
+  - type: device.event.DoorbellPress
+    device: Front Door doorbell - Front Door
+  condition:
+    type: device.state.OccupancySensing
+    device: sensor - Living Room
+    state: occupancy
+    is: OCCUPIED
+  actions:
+  - type: device.command.LightEffectPulse
+    devices:
+    - light - Living Room
+    duration: 5min

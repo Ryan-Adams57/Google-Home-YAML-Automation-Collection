@@ -1,0 +1,21 @@
+metadata:
+  name: Movie night blinds, lights, and appliances
+  description: When Assistant hears "movie night", lower the blinds, turn off the lights, and pause certain noisy appliances.
+automations:
+- starters:
+  - type: assistant.event.OkGoogle
+    eventData: query
+    is: "Movie Night"
+  actions:
+  - type: device.command.OnOff
+    devices:
+    - light - Living Room
+    on: false
+  - type: device.command.OpenClose
+    devices:
+    - blinds - Living Room
+    openPercent: 0
+  - type: device.command.PauseUnpause
+    devices:
+    - washer - Hall
+    pause: true

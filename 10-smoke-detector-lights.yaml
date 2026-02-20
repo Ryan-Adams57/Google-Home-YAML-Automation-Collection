@@ -1,0 +1,42 @@
+metadata:
+  name: Smoke detector lights
+  description: When smoke is detected, flash lights red and blue.
+automations:
+- starters:
+  - type: device.state.SensorState
+    device: Smoke Detector - Kitchen
+    state: currentSensorStateData.SmokeLevel.currentSensorState
+    is: high
+  actions:
+  # Setting color will automatically turn on the lights.
+  # No need to add a separate OnOff command.
+  - type: device.command.ColorAbsolute
+    devices:
+    - Light - Living Room
+    color:
+      name: "red"
+  - type: time.delay
+    for: 5sec
+  - type: device.command.OnOff
+    devices: Light - Living Room
+    on: false
+  - type: time.delay
+    for: 5sec
+  - type: device.command.ColorAbsolute
+    devices:
+    - Light - Living Room
+    color:
+      name: "blue"
+  - type: time.delay
+    for: 5sec
+  - type: device.command.OnOff
+    devices:
+    - Light - Living Room
+    on: false
+  - type: time.delay
+    for: 5sec
+  - type: device.command.ColorAbsolute
+    devices:
+    - Light - Living Room
+    color:
+      name: "red"

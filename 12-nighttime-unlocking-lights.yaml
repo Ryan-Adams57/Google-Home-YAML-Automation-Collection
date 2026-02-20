@@ -1,0 +1,20 @@
+metadata:
+  name: Nighttime unlocking lights
+  description: At night, when a lock is unlocked, turn on the light at full brightness.
+automations:
+- starters:
+  - type: device.state.LockUnlock
+    device: Front Door - Living Room
+    state: isLocked
+    is: false
+  condition:
+    type: time.between
+    after: SUNSET
+    before: SUNRISE
+  actions:
+  # Adjusting brightness will automatically turn on the lights.
+  # No need to add a separate OnOff command.
+  - type: device.command.BrightnessAbsolute
+    devices:
+    - Light - Bedroom
+    brightness: 100

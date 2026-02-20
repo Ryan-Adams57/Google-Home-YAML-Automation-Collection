@@ -1,0 +1,16 @@
+metadata:
+  name: Carbon monoxide detection lights
+  description: When carbon monoxide is detected, flash the lights.
+automations:
+- starters:
+  - type: device.state.SensorState
+    device: coDetector - Living Room
+    state: currentSensorStateData.CarbonMonoxideLevel.currentSensorState
+    is: carbon monoxide detected
+  actions:
+  # Only works for lights that support Pulse effect
+  - type: device.command.LightEffectPulse
+    devices:
+    - Light - Bedroom
+    - Light - Living Room
+    duration: 5min

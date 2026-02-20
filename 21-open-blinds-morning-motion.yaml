@@ -1,0 +1,18 @@
+metadata:
+  name: Open blinds
+  description: Open blinds in the morning after motion is detected.
+automations:
+- starters:
+  - type: device.event.MotionDetection
+    device: Camera - Hallway
+    suppressFor: 20 hours
+  condition:
+    type: time.between
+    after: 5:00
+    before: 12:00
+  actions:
+  - type: device.command.OpenClose
+    openPercent: 100
+    devices:
+    - Blinds1 - Living Room
+    - Blinds2 - Family Room

@@ -1,0 +1,24 @@
+metadata:
+  name: Empty home vacuum
+  description: When the home is unoccupied, run the vacuum.
+automations:
+# Turn on robot vacuum when everyone is away
+- starters:
+  - type: home.state.HomePresence
+    state: homePresenceMode
+    is: AWAY
+  actions:
+  - type: device.command.StartStop
+    devices:
+    - VACUUM - LIVING_ROOM
+    start: true
+# Turn off robot vacuum when someone is home
+- starters:
+  - type: home.state.HomePresence
+    state: homePresenceMode
+    is: HOME
+  actions:
+  - type: device.command.StartStop
+    devices:
+    - VACUUM - LIVING_ROOM
+    start: false

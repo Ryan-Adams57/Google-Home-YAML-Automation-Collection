@@ -1,0 +1,21 @@
+metadata:
+  name: Cool weather heating
+  description: If it is cool, open blinds, turn on fans, and adjust thermostats.
+automations:
+- starters:
+  - type: device.state.TemperatureSetting
+    state: thermostatTemperatureAmbient
+    device: thermostat - Family Room
+    lessThan: 18C
+  actions:
+  - type: device.command.OpenClose
+    devices:
+    - blinds - Bedroom
+    openPercent: 100
+  - type: device.command.OnOff
+    devices: fan - Bedroom
+    on: true
+  - type: device.command.ThermostatTemperatureSetpoint
+    devices:
+    - thermostat - Family Room
+    thermostatTemperatureSetpoint: 21C
