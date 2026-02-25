@@ -1,0 +1,31 @@
+metadata:
+  name: Auto-Assist HOME/AWAY
+  description: Turns the heating on and off based on changes in the status of the house
+
+automations:
+  #HOME
+  - starters:
+      - type: home.state.HomePresence
+        state: homePresenceMode
+        is: HOME
+    actions:
+      - type: device.command.ThermostatSetMode 
+        thermostatMode: on
+        devices:
+          - x
+          - y
+          - z
+
+  #AWAY
+  - starters:
+      - type: home.state.HomePresence
+        state: homePresenceMode
+        is: AWAY
+
+    actions:
+      - type: device.command.ThermostatSetMode 
+        thermostatMode: off
+        devices:
+          - x
+          - y
+          - z
